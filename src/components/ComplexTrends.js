@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Wordcloud from 'wordcloud';
 import {Grid, Row, Col} from 'react-bootstrap';
+import logo from './wtfnow.gif';
+import '../css/ComplexTrends.css';
 
 
 class ComplexTrends extends Component  {
@@ -60,6 +62,11 @@ class ComplexTrends extends Component  {
       fontFamily: 'Times, serif',
       weightFactor: 3}
     );
+
+    let spinners = document.querySelectorAll('.App-logo');
+    for (let i = 0; i < spinners.length; i++) {
+      spinners[i].style.display = 'none';
+    }
   }
 
   render() {
@@ -70,6 +77,7 @@ class ComplexTrends extends Component  {
       <Col xs={8} md={4}>
           <div className="current-trend">
             <h4><strong>Now: {this.state.current.fulldate}</strong></h4>
+            <img src={logo} className="App-logo" alt="LOADING..." />
             <canvas ref="currentwordcount" className="canvas"/>
           </div>
         </Col>
@@ -78,6 +86,7 @@ class ComplexTrends extends Component  {
         <Col xs={8} md={4}>
           <div className="six-ago-trend">
               <h5>6hrs: {this.state.sixAgo.fulldate}</h5>
+              <img src={logo} className="App-logo" alt="LOADING..." />
               <canvas ref="sixagowordcount" className="canvas"/>
             </div>
         </Col>
@@ -85,6 +94,7 @@ class ComplexTrends extends Component  {
         <Col xs={8} md={4}>
           <div className="twelve-ago-trend">
               <h5>12hrs: {this.state.twelveAgo.fulldate}</h5>
+              <img src={logo} className="App-logo" alt="LOADING..." />
             <canvas ref="twelveagowordcount" className="canvas" />
           </div>
         </Col>

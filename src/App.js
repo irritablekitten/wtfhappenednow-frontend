@@ -23,7 +23,7 @@ class App extends Component {
         </div>
         <footer className="App-footer">
           <h4>*Timestamps in PDT</h4>
-          <p>© 2018 Sam Defazio - more projects at <a href="https://samdefazio.com">samdefazio.com</a></p>
+          <p>© 2018 Sam Defazio, powered by NewsAPI.org - more projects at <a href="https://samdefazio.com">samdefazio.com</a></p>
         </footer>
       </div>
     );
