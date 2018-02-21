@@ -46,21 +46,21 @@ class ComplexTrends extends Component  {
       {list: this.state.current.wordcount.slice(0, 50),
         gridSize: Math.round(16 * document.querySelector('.canvas').style.width / 1024),
         fontFamily: 'Times, serif', 
-        weightFactor: 3}  
+        weightFactor: 2}  
     );
     Wordcloud(
       this.refs["sixagowordcount"],
     {list: this.state.sixAgo.wordcount.slice(0, 50),
       gridSize: Math.round(16 * document.querySelector('.canvas').style.width / 1024),
       fontFamily: 'Times, serif',
-    weightFactor: 3}
+    weightFactor: 2}
     );
     Wordcloud(
       this.refs["twelveagowordcount"],
     {list: this.state.twelveAgo.wordcount.slice(0, 50),
       gridSize: Math.round(16 * document.querySelector('.canvas').style.width / 1024),
       fontFamily: 'Times, serif',
-      weightFactor: 3}
+      weightFactor: 2}
     );
 
     let spinners = document.querySelectorAll('.App-logo');
@@ -85,7 +85,7 @@ class ComplexTrends extends Component  {
         
         <Col xs={8} md={4}>
           <div className="six-ago-trend">
-              <h5>6hrs: {this.state.sixAgo.fulldate}</h5>
+              <h5><strong>6hrs: {this.state.sixAgo.fulldate}</strong></h5>
               <img src={logo} className="App-logo" alt="LOADING..." />
               <canvas ref="sixagowordcount" className="canvas"/>
             </div>
@@ -93,7 +93,7 @@ class ComplexTrends extends Component  {
 
         <Col xs={8} md={4}>
           <div className="twelve-ago-trend">
-              <h5>12hrs: {this.state.twelveAgo.fulldate}</h5>
+              <h5><strong>12hrs: {this.state.twelveAgo.fulldate}</strong></h5>
               <img src={logo} className="App-logo" alt="LOADING..." />
             <canvas ref="twelveagowordcount" className="canvas" />
           </div>

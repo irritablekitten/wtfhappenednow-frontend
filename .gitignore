@@ -8,6 +8,8 @@
 
 # production
 /build
+/functions
+/src/keys/keys.js
 
 # misc
 .DS_Store
