@@ -32,6 +32,19 @@ class ComplexTrends extends Component  {
     });  
   }
 
+  pickWeight(list) {
+    console.log(list[0][1], list[1][1]);
+    if (list[0][1] > 40 && list[1][1] > 20) {
+      return 1;
+    }
+    else if (list[0][1] > 25) {
+      return 2;
+    }
+    else {
+      return 3;
+    }
+  }
+
   componentWillMount() {
     let app = this.props.db.database().ref('/newsdata/1d3V3Yd3CRen8aqYTrXx/results');
     app.limitToLast(13).on('value', snapshot => {
@@ -46,21 +59,21 @@ class ComplexTrends extends Component  {
       {list: this.state.current.wordcount.slice(0, 50),
         gridSize: Math.round(16 * document.querySelector('.canvas').style.width / 1024),
         fontFamily: 'Times, serif', 
-        weightFactor: 2}  
+        weightFactor: this.pickWeight(this.state.current.wordcount)}  
     );
     Wordcloud(
       this.refs["sixagowordcount"],
     {list: this.state.sixAgo.wordcount.slice(0, 50),
       gridSize: Math.round(16 * document.querySelector('.canvas').style.width / 1024),
       fontFamily: 'Times, serif',
-    weightFactor: 2}
+    weightFactor: this.pickWeight(this.state.sixAgo.wordcount)}
     );
     Wordcloud(
       this.refs["twelveagowordcount"],
     {list: this.state.twelveAgo.wordcount.slice(0, 50),
       gridSize: Math.round(16 * document.querySelector('.canvas').style.width / 1024),
       fontFamily: 'Times, serif',
-      weightFactor: 2}
+      weightFactor: this.pickWeight(this.state.twelveAgo.wordcount)}
     );
 
     let spinners = document.querySelectorAll('.App-logo');
