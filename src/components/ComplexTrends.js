@@ -28,7 +28,8 @@ class ComplexTrends extends Component  {
     this.setState({
         current: messages[12],
         sixAgo: messages[6],
-        twelveAgo: messages[0]
+        twelveAgo: messages[0],
+        twentyFour: messages
     });  
   }
 
@@ -45,9 +46,16 @@ class ComplexTrends extends Component  {
     }
   }
 
+  getTotals() {
+    let copy = this.state.twentyFour;
+    copy.map(trend => {
+      console.log(trend);
+    })
+  }
+
   componentWillMount() {
     let app = this.props.db.database().ref('/newsdata/1d3V3Yd3CRen8aqYTrXx/results');
-    app.limitToLast(13).on('value', snapshot => {
+    app.limitToLast(24).on('value', snapshot => {
       this.getData(snapshot.val()); 
     });
     
@@ -80,6 +88,8 @@ class ComplexTrends extends Component  {
     for (let i = 0; i < spinners.length; i++) {
       spinners[i].style.display = 'none';
     }
+
+    this.getTotals();
   }
 
   render() {

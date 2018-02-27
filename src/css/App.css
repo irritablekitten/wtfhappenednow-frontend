@@ -37,3 +37,16 @@
 #trends {
   margin: 1% 0;
 }
+
+@media (min-width: 1200px) { 
+  .App-header {
+    height: 150px;
+    padding: 20px;
+  }
+  
+  .App-footer {
+    padding: 15px;
+  }
+}
+
+
