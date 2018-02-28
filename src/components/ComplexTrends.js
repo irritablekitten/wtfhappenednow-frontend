@@ -119,7 +119,7 @@ class ComplexTrends extends Component  {
     {list: this.getTotals(),
       gridSize: Math.round(16 * document.querySelector('.big-canvas').style.width / 1024),
       fontFamily: 'Times, serif',
-      weightFactor: 0.8}
+      weightFactor: 0.75}
     );
 
     let spinners = document.querySelectorAll('.App-logo');
@@ -146,7 +146,7 @@ class ComplexTrends extends Component  {
       <Row className="show-grid">
       <Col md={4}>
           <div className="current-trend trend">
-            <h4><strong>Current: {now}</strong></h4>
+            <h4><strong>Hourly: {now}</strong></h4>
             <img src={logo} className="App-logo" alt="LOADING..." />
             <canvas ref="currentwordcount" className="canvas"/>
           </div>
