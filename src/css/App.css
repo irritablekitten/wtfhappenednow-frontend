@@ -2,15 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 10s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
-  padding: 20px;
   color: white;
 }
 
@@ -22,30 +16,25 @@
   font-size: 1.8em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 .App-footer {
-  background-color: #222;
-  height: 100px;
-  padding: 15px;
-  color: white;
   font-size: 1.2em;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  padding: 15px;
 }
 
 #trends {
   margin: 1% 0;
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 768px) { 
   .App-header {
     height: 150px;
     padding: 20px;
   }
   
   .App-footer {
-    padding: 15px;
+    padding: 45px;
   }
 }
 
