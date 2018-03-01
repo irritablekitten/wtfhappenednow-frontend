@@ -4,15 +4,11 @@
 }
 
 .big-canvas {
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
 .canvas {
   border-radius: 5px;
-}
-
-.show-grid {
-  margin: 2% 0;
 }
 
 .trend {

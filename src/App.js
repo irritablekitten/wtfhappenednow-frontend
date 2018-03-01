@@ -25,7 +25,7 @@ class App extends Component {
         
         </div>
         <footer className="App-footer">
-          <p>Powered by <a href="https://newapi.org">NewsAPI.org</a> - server logic on <a href="https://github.com/irritablekitten/wtfhappenednow">Github</a> - more projects at <a href="https://samdefazio.com">samdefazio.com</a></p>
+          <p>Powered by <a href="https://newapi.org">NewsAPI.org</a> & <a href="https://timdream.org/wordcloud2.js/#love">Wordcloud2.js</a> - server logic on <a href="https://github.com/irritablekitten/wtfhappenednow">Github</a> - more projects at <a href="https://samdefazio.com">samdefazio.com</a></p>
         </footer>
       </div>
     );

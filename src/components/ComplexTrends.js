@@ -5,7 +5,7 @@ import moment from 'moment';
 import {Grid, Row, Col} from 'react-bootstrap';
 import logo from './wtfnow.gif';
 import '../css/ComplexTrends.css';
-
+import Sources from './Sources';
 
 class ComplexTrends extends Component  {
   constructor(props){
@@ -14,7 +14,8 @@ class ComplexTrends extends Component  {
       current: {},
       sixAgo: {},
       twelveAgo: {},
-      twentyFour: {}
+      twentyFour: {},
+      dailySourceTrend: {}
     };
   }
   getData(values){
@@ -31,7 +32,8 @@ class ComplexTrends extends Component  {
         current: messages[24],
         sixAgo: messages[18],
         twelveAgo: messages[12],
-        twentyFour: messages
+        twentyFour: messages,
+        dailySourceTrend: this.getSourceTotals(messages)
     });  
   }
 
@@ -78,6 +80,39 @@ class ComplexTrends extends Component  {
     return newArray;
   }
 
+  getSourceTotals(copy) {
+    let newObj = {};
+    let newArray = [];
+    copy.map(function(trend) {
+      for (let firstCount in trend.sourcecount.slice(0, 5)) {
+        for (let secondCount in trend.sourcecount.slice(0, 5)) {
+          if (trend.sourcecount[firstCount][0] === trend.sourcecount[secondCount][0]) {
+            let trendSource = trend.sourcecount[firstCount][0];
+            let total = {
+              source: trendSource,
+              count: trend.sourcecount[firstCount][1] + trend.sourcecount[secondCount][1]
+            };
+            newObj[trendSource] = total;
+          }
+        }
+      }
+    })
+    for(let singleTrend in newObj) {
+      let temp = [newObj[singleTrend].source, newObj[singleTrend].count];
+      newArray.push(temp);
+    }
+    newArray.sort(function(a, b) {
+      return b[1] - a[1];
+    });
+    return newArray;
+  }
+
+  updateTime() {
+    document.querySelectorAll('h4')[0].innerHTML = 'Hourly: ' + moment().format('LT');
+    document.querySelectorAll('h4')[1].innerHTML = '6hrs ago: ' + moment().subtract(6, 'hours').format('LT');
+    document.querySelectorAll('h4')[2].innerHTML = '12hrs ago: ' + moment().subtract(12, 'hours').format('LT');
+  }
+
   componentWillMount() {
     let app = this.props.db.database().ref('/newsdata/1d3V3Yd3CRen8aqYTrXx/results');
     app.limitToLast(25).on('value', snapshot => {
@@ -119,22 +154,21 @@ class ComplexTrends extends Component  {
     {list: this.getTotals(),
       gridSize: Math.round(16 * document.querySelector('.big-canvas').style.width / 1024),
       fontFamily: 'Times, serif',
-      weightFactor: 0.75}
+      weightFactor: 0.5}
     );
 
     let spinners = document.querySelectorAll('.App-logo');
     for (let i = 0; i < spinners.length; i++) {
       spinners[i].style.display = 'none';
     }
-    console.log('Server timestamp: ' + this.state.current.fulldate + ' PDT');
+
+    this.updateTime();
   }
 
   render() {
-  let now = moment().format('LT');
-  let sixHours = moment().subtract(6, 'hours').format('LT');
-  let twelveHours = moment().subtract(12, 'hours').format('LT');
   return (
   <div>
+    <Sources sources={this.state.dailySourceTrend}/>
     <Grid>
       <Row>
         <div className="daily-trend trend">
@@ -146,7 +180,7 @@ class ComplexTrends extends Component  {
       <Row className="show-grid">
       <Col md={4}>
           <div className="current-trend trend">
-            <h4><strong>Hourly: {now}</strong></h4>
+            <h4><strong>Hourly: </strong></h4>
             <img src={logo} className="App-logo" alt="LOADING..." />
             <canvas ref="currentwordcount" className="canvas"/>
           </div>
@@ -154,7 +188,7 @@ class ComplexTrends extends Component  {
 
         <Col md={4}>
           <div className="six-ago-trend trend">
-              <h4><strong>6hrs ago: {sixHours}</strong></h4>
+              <h4><strong>6hrs ago: </strong></h4>
               <img src={logo} className="App-logo" alt="LOADING..." />
               <canvas ref="sixagowordcount" className="canvas"/>
             </div>
@@ -162,7 +196,7 @@ class ComplexTrends extends Component  {
 
         <Col md={4}>
           <div className="twelve-ago-trend trend">
-              <h4><strong>12hrs ago: {twelveHours}</strong></h4>
+              <h4><strong>12hrs ago: </strong></h4>
               <img src={logo} className="App-logo" alt="LOADING..." />
             <canvas ref="twelveagowordcount" className="canvas" />
           </div>

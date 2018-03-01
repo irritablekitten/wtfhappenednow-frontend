@@ -4,7 +4,7 @@
 
 .App-header {
   background-color: #222;
-  height: 200px;
+  height: 170px;
   padding: 10px;
   color: white;
 }
@@ -25,13 +25,13 @@
 }
 
 #trends {
-  margin: 1% 0;
+  margin-bottom: 1%;
 }
 
 @media (min-width: 400px) {
   .App-header {
     background-color: #222;
-    height: 180px;
+    height: 160px;
     padding: 15px;
     color: white;
   }
