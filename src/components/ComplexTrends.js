@@ -56,14 +56,14 @@ class ComplexTrends extends Component  {
     if (list[0][1] > 100 && list[1][1] > 80 && list[2][1] > 70 && list[3][1] > 60 && list[4][1]) {
       return 0.5;
     }
-    else if (list[0][1] > 50 && list[19][1] > 30 && list[29][1] > 20)  {
+    else if (list[0][1] > 70 && list[19][1] > 40 && list[29][1] > 30)  {
       return 1;
     }
     else if (list[0][1] > 40 && list[19][1] > 20 && list[29][1] > 10) {
-      return 2;
+      return 1.2;
     }
     else {
-      return 3;
+      return 1.5;
     }
   }
 
