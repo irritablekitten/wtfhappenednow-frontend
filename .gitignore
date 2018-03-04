@@ -9,7 +9,7 @@
 # production
 /build
 /functions
-/src/keys/keys.js
+/src/keys
 
 # misc
 .DS_Store
