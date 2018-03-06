@@ -189,7 +189,7 @@ class ComplexTrends extends Component  {
   render() {
   return (
   <div>
-    <Sources sources={this.state.dailySourceTrend}/>
+    <Sources sources={this.state.dailySourceTrend} />
     <Grid>
       <Row>
         <div className="daily-trend trend">

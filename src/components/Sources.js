@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Grid, Row} from 'react-bootstrap';
 import '../css/Sources.css';
 const sourceArray = [
     {id: 'abc-news',
@@ -144,7 +144,7 @@ makeButton(origSource) {
 }
 
 componentDidUpdate() {
-    document.querySelector('.source').innerHTML = '<a>Frequently appearing: </a>';
+    document.querySelector('.source').innerHTML = '<a>Frequently appearing:&nbsp;</a>';
     let buttons = [];
     if (this.props.sources !== undefined && this.props.sources !=='') {
      let temp = this.props.sources.slice(0, 12).map((source, c) => buttons.push(this.makeButton(source[0])))
@@ -160,7 +160,7 @@ render() {
                 <Grid>
                     <Row>
                         <div className="source">
-                        <a>Frequently appearing: </a>
+                        <a>Frequently appearing:&nbsp;</a>
                         </div>
                     </Row>
                 </Grid>

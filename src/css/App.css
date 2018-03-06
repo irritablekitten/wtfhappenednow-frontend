@@ -19,8 +19,8 @@
 
 .App-footer {
   font-size: 1.2em;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  background-color: #222;
+  color: white;
   padding: 15px;
 }
 
@@ -42,9 +42,17 @@
     height: 150px;
     padding: 20px;
   }
-  
+  #trends {
+    margin-bottom: 5%;
+  }
   .App-footer {
-    padding: 45px;
+    padding: 2%;
+  }
+}
+
+@media (min-width: 1080px) {
+  #trends {
+    margin-bottom: 4%;
   }
 }
 
