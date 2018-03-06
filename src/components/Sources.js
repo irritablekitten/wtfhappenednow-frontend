@@ -139,12 +139,12 @@ compareSources(compareSource) {
 
 makeButton(origSource) {
     let data = this.compareSources(origSource);
-    let button = `<a className='source-link' key=${data[0]} href=${data[1]} target="_blank">${data[0]} &nbsp; </a>`;
+    let button = `<a className='source-link' key=${data[0]} href=${data[1]} target="_blank">${data[0]}</a>&nbsp;`;
     return button;
 }
 
 componentDidUpdate() {
-    document.querySelector('.source').innerHTML = '<a>Frequently appearing:&nbsp;</a>';
+    document.querySelector('.source').innerHTML = '<a>Frequently appearing:</a>&nbsp;';
     let buttons = [];
     if (this.props.sources !== undefined && this.props.sources !=='') {
      let temp = this.props.sources.slice(0, 12).map((source, c) => buttons.push(this.makeButton(source[0])))
@@ -160,7 +160,7 @@ render() {
                 <Grid>
                     <Row>
                         <div className="source">
-                        <a>Frequently appearing:&nbsp;</a>
+                        <a>Frequently appearing:</a>&nbsp;
                         </div>
                     </Row>
                 </Grid>
