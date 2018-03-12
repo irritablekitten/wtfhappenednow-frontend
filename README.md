@@ -1,1 +1,1 @@
-Create-React-App that serves up data from the news api backend
+Create-React-App that serves up data from a firebase DB containing results posted from the wtfhappenednow backend, which are made into Word Clouds using Wordcloud2js and custom logic to determine size and weight. Sources are filtered similarly but instead of a word cloud, they are simply added to a div as links to source websites, and are updated alongside the daily trend.
