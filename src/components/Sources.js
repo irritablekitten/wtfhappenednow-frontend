@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Grid, Row} from 'react-bootstrap';
 import '../css/Sources.css';
+//really long list of 40 sources and their attributes
 const sourceArray = [
     {id: 'abc-news',
     name: 'ABC News',
@@ -123,10 +124,10 @@ const sourceArray = [
     name: 'WIRED',
     url: 'https://www.wired.com/'}];
 
-//.map((source, c) => <button key={source}>{source}</button>)
 
 class Sources extends Component  {
 
+//creates array of sources using the source id to check for a match and adds the proper name, along with the source url to the array
 compareSources(compareSource) {
     let data = [];
     for (let source in sourceArray) {
@@ -137,12 +138,14 @@ compareSources(compareSource) {
     }
 }
 
+//creates a source button with proper name and source url
 makeButton(origSource) {
     let data = this.compareSources(origSource);
     let button = `<a className='source-link' key=${data[0]} href=${data[1]} target="_blank">&nbsp;${data[0]}&nbsp;</a>&nbsp;`;
     return button;
 }
 
+//refreshes sources and adds them individually to the top-level source div
 componentDidUpdate() {
     document.querySelector('.source').innerHTML = '<a>Frequently appearing:&nbsp;</a>&nbsp;';
     let buttons = [];

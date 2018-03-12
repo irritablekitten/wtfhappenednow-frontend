@@ -18,6 +18,8 @@ class ComplexTrends extends Component  {
       dailySourceTrend: {}
     };
   }
+
+  //get pieces of data from db results and set state
   getData(values){
     let messagesVal = values;
     let messages = _(messagesVal)
@@ -37,6 +39,7 @@ class ComplexTrends extends Component  {
     });  
   }
 
+  //return a number for the font weight of every cloud, based on the trend sizes at the time
   pickWeight(list) {
     if (list[0][1] > 40 && list[1][1] > 20) {
       return 1;
@@ -52,14 +55,18 @@ class ComplexTrends extends Component  {
     }
   }
 
+  //return a number for the big word cloud's font weight
   pickBigWeight(list) {
     if (list[0][1] > 100 && list[1][1] > 80 && list[2][1] > 70 && list[3][1] > 60 && list[4][1]) {
       return 0.5;
     }
-    else if (list[0][1] > 70 && list[19][1] > 40 && list[29][1] > 30)  {
+    else if (list[0][1] > 80 && list[19][1] > 40 && list[29][1] > 30)  {
       return 1;
     }
-    else if (list[0][1] > 40 && list[19][1] > 20 && list[29][1] > 10) {
+    else if (list[0][1] > 60 && list[19][1] > 20 && list[29][1] > 10) {
+      return 1.1;
+    }
+    else if (list[0][1] > 40 && list[19][1] > 10 && list[29][1] > 4) {
       return 1.2;
     }
     else {
@@ -67,6 +74,7 @@ class ComplexTrends extends Component  {
     }
   }
 
+  //adds the last 24 records together, finding matches between words and updating the total count for each
   getTotals() {
     let copy = this.state.twentyFour;
     let newObj = {};
@@ -95,6 +103,7 @@ class ComplexTrends extends Component  {
     return newArray;
   }
 
+  //adds the last 24 source records together
   getSourceTotals(copy) {
     let newObj = {};
     let newArray = [];
@@ -122,12 +131,14 @@ class ComplexTrends extends Component  {
     return newArray;
   }
 
+  //runs when the word clouds update every hour to present the new trends, and updates the moment timestamps to reflect that //useful when browser is left open
   updateTime() {
     document.querySelectorAll('h4')[0].innerHTML = 'Hourly: ' + moment().format('LT');
     document.querySelectorAll('h4')[1].innerHTML = '6hrs ago: ' + moment().subtract(6, 'hours').format('LT');
     document.querySelectorAll('h4')[2].innerHTML = '12hrs ago: ' + moment().subtract(12, 'hours').format('LT');
   }
 
+  //grab data from db
   componentWillMount() {
     let app = this.props.db.database().ref('/newsdata/1d3V3Yd3CRen8aqYTrXx/results');
     app.limitToLast(25).on('value', snapshot => {
@@ -135,7 +146,7 @@ class ComplexTrends extends Component  {
     });
     
   }
-
+  //calculates word clouds when the page loads and when a new trend is posted to the db
   componentDidUpdate() {
     Wordcloud(
       this.refs["currentwordcount"],
@@ -193,6 +204,7 @@ class ComplexTrends extends Component  {
     <Grid>
       <Row>
         <div className="daily-trend trend">
+        <img src={logo} className="App-logo" alt="LOADING..." />
         <canvas ref="dailytrend" className="big-canvas" height="300" width="300"/>
         </div>
       </Row>
