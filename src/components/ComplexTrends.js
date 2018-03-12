@@ -191,10 +191,8 @@ class ComplexTrends extends Component  {
     for (let i = 0; i < spinners.length; i++) {
       spinners[i].style.display = 'none';
     }
-    let test = this.getTotals();
     this.updateTime();
     console.log('Server timestamp: ' + this.state.current.fulldate);
-    console.log(test);
   }
 
   render() {
