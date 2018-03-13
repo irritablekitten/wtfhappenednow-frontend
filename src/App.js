@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import config from './keys/keys';
 import moment from 'moment';
-import ComplexTrends from './components/ComplexTrends';
-import './css/App.css';
+import ComplexTrends from './components/ComplexTrends/ComplexTrends';
+import './boilerplate-css/App.css';
 
 class App extends Component {
   constructor(props) {

@@ -4,8 +4,8 @@ import Wordcloud from 'wordcloud';
 import moment from 'moment';
 import {Grid, Row, Col} from 'react-bootstrap';
 import logo from './wtfnow.gif';
-import '../css/ComplexTrends.css';
-import Sources from './Sources';
+import './ComplexTrends.css';
+import Sources from '../Sources/Sources';
 
 class ComplexTrends extends Component  {
   constructor(props){
@@ -202,7 +202,6 @@ class ComplexTrends extends Component  {
     <Grid>
       <Row>
         <div className="daily-trend trend">
-        <img src={logo} className="App-logo" alt="LOADING..." />
         <canvas ref="dailytrend" className="big-canvas" height="300" width="300"/>
         </div>
       </Row>

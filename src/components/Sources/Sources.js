@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Grid, Row} from 'react-bootstrap';
-import '../css/Sources.css';
+import './Sources.css';
 //really long list of 40 sources and their attributes
 const sourceArray = [
     {id: 'abc-news',
